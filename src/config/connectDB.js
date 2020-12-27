@@ -28,7 +28,6 @@ let connectDB = () => {
 };
 module.exports = connectDB;
 
-// import {MongoClient} from 'mongodb';
 
 // let connectDB = async() => {
 //   /**
