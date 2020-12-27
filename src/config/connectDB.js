@@ -5,7 +5,7 @@ console.log("====", process.env.MONGODB_URI);
 let connectDB = () => {
   mongoose.Promise = bluebird;
   try {
-    mongoose.connect('mongodb+srv://admin:admin@cluster0.livbm.mongodb.net/HomeLynh?authSource=admin&replicaSet=atlas-ot4snx-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true&retryWrites=false', {
+    mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
