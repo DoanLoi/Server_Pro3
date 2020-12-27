@@ -47,6 +47,12 @@ app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 //Cau hinh router
+
+app.use((req, res, next) => {
+  console.log(`[${new Date().toLocaleTimeString}]: ${req.method} - ${req.url}`)
+  next()
+})
+
 initRoutes(app);
 io.on('connection', (socket) => {
   try {
@@ -59,6 +65,6 @@ io.on('connection', (socket) => {
   }
 });
 // initSockets(io);
-server.listen(process.env.PORT, process.env.APP_HOST, () => {
+server.listen(Number(process.env.PORT), process.env.APP_HOST, () => {
   console.log('Server is running on port ' + process.env.PORT);
 });
