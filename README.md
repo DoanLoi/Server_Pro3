@@ -1,0 +1,2 @@
+-Các ông tạo nhánh rồi push 
+- Commit thì cố gắng miêu tả chi tiết để  dễ quản lý nhé
