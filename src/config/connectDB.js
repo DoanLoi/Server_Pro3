@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 import bluebird from "bluebird";
 require("dotenv").config();
-console.log("====", process.env.MONGO_URI);
+console.log("====", process.env.MONGODB_URI);
 let connectDB = () => {
   mongoose.Promise = bluebird;
   try {
-    mongoose.connect(process.env.MONGO_URI, {
+    mongoose.connect(process.env.MONGODB_URI+'', {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
