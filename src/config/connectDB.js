@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 import bluebird from "bluebird";
 require("dotenv").config();
-console.log("======", process.env.MONGO_URI);
+console.log("====", process.env.MONGO_URI);
 let connectDB = () => {
   mongoose.Promise = bluebird;
   try {
