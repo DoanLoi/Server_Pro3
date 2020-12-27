@@ -4,7 +4,8 @@ import connectMongo from "connect-mongo";
 let MongoStore=connectMongo(session);
 
 let sessionStore=new MongoStore({
-  url:`${process.env.DB_CONNECTION}://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+  // url:`${process.env.DB_CONNECTION}://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
+  url: process.env.MONGODB_URI,
   autoReconnect:true,
   // autoRemove:"native"
 })

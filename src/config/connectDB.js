@@ -1,28 +1,34 @@
-const mongoose = require("mongoose");
-import bluebird from "bluebird";
-require("dotenv").config();
-console.log("======", process.env.MONGODB_URI);
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+import bluebird from 'bluebird';
+
 /**
  * Connect to MongoDB
  */
 let connectDB = () => {
   mongoose.Promise = bluebird;
   try {
+    console.log('1======', process.env.MONGODB_URI);
     mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-      useFindAndModify: true
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useUnifiedTopology: true,
+        useFindAndModify: true
+      })
+      .then(r => console.log('Connect mongodb success!'))
+      .catch(reason => console.error('Error connecting to mongo', reason));
+
+    mongoose.connection.on('connected', () => {
+      console.log('Connected to mongo instance');
     });
-    mongoose.connection.on("connected", () => {
-      console.log("Connected to mongo instance");
-    });
-    mongoose.connection.on("error", (err) => {
-      console.error("Error connecting to mongo", err);
+    mongoose.connection.on('error', (err) => {
+      console.error('Error connecting to mongo', err);
     });
 
   } catch (error) {
-    console.error("Error connecting to mongo", err);
+    console.error('Error connecting to mongo', error);
+    throw error;
   }
 
   //mongodb://localhost:2108/DVLChat
